@@ -21,11 +21,6 @@
         </a>
       </td>
     </tr>
-    <tr>
-      <td align="center">
-        <img src="https://img.shields.io/badge/WinClick%201.0-15k-blue?style=for-the-badge&logo=download">
-      </td>
-    </tr>
   </tbody>
 </table>
 
