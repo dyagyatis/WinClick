@@ -7,7 +7,7 @@
 
 #
 
-[![Смотреть видео](https://i.ibb.co/N2RkzMXj/Untitled-2.png)](https://youtu.be/JMTuY_Gi70U)
+[![Смотреть видео](https://github.com/dyagyatis/WinClick/blob/main/Frame%20248.png)]()
 
 <table align="center" style="border: none; border-collapse: collapse;">
   <tbody>
