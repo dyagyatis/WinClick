@@ -1,0 +1,220 @@
+<Window x:Class="WinClickWpf.Views.ServicesOptimizerDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Профили служб Windows"
+        Width="740" Height="620"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="DarkBgBrush" Color="#141619"/>
+        <SolidColorBrush x:Key="CardBgBrush" Color="#1E2228"/>
+        <SolidColorBrush x:Key="AccentBrush" Color="#5E81AC"/>
+
+        <!-- Profile Card Button Style -->
+        <Style x:Key="ProfileCardBtnStyle" TargetType="Button">
+            <Setter Property="Height" Value="56"/>
+            <Setter Property="Margin" Value="0,0,0,8"/>
+            <Setter Property="Background" Value="#1A1E24"/>
+            <Setter Property="BorderBrush" Value="#335E81AC"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="bd" Background="{TemplateBinding Background}" CornerRadius="8" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="14,0,14,0" RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                            </Border.RenderTransform>
+                            <ContentPresenter VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bd" Property="Background" Value="#2A303A"/>
+                                <Setter TargetName="bd" Property="BorderBrush" Value="#5E81AC"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="bd" Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="0.97" ScaleY="0.97"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Secondary Button Style -->
+        <Style x:Key="SecondaryBtnStyle" TargetType="Button">
+            <Setter Property="Height" Value="34"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontFamily" Value="Bahnschrift"/>
+            <Setter Property="Background" Value="#252A32"/>
+            <Setter Property="Foreground" Value="#CCCCCC"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#335E81AC"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="bd" Background="{TemplateBinding Background}" CornerRadius="6" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                            </Border.RenderTransform>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="12,0,12,0"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bd" Property="Background" Value="#3D4450"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="bd" Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="0.96" ScaleY="0.96"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Border Background="{StaticResource DarkBgBrush}" CornerRadius="12" BorderBrush="{StaticResource AccentBrush}" BorderThickness="1" Padding="20" RenderTransformOrigin="0.5,0.5">
+        <Border.RenderTransform>
+            <ScaleTransform x:Name="DialogScale" ScaleX="0.96" ScaleY="0.96"/>
+        </Border.RenderTransform>
+        <Border.Triggers>
+            <EventTrigger RoutedEvent="Border.Loaded">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetName="DialogScale" Storyboard.TargetProperty="ScaleX" From="0.96" To="1.0" Duration="0:0:0.18">
+                            <DoubleAnimation.EasingFunction>
+                                <CubicEase EasingMode="EaseOut"/>
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                        <DoubleAnimation Storyboard.TargetName="DialogScale" Storyboard.TargetProperty="ScaleY" From="0.96" To="1.0" Duration="0:0:0.18">
+                            <DoubleAnimation.EasingFunction>
+                                <CubicEase EasingMode="EaseOut"/>
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Border.Triggers>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Header -->
+            <Grid Grid.Row="0" Margin="0,0,0,12">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <Viewbox Width="22" Height="22" Margin="0,0,10,0" VerticalAlignment="Center">
+                        <Path Fill="#EBCB8B" Data="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
+                    </Viewbox>
+                    <StackPanel>
+                        <TextBlock Text="Профили оптимизации служб Windows"
+                                   FontFamily="Bahnschrift"
+                                   FontWeight="Bold"
+                                   FontSize="18"
+                                   Foreground="#EBCB8B"/>
+                        <TextBlock Text="Готовые сценарии безопасного отключения фоновых служб для игр и слабых ПК"
+                                   FontFamily="Bahnschrift"
+                                   FontSize="11"
+                                   Foreground="#888888"
+                                   Margin="0,2,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- Close Button -->
+                <Border Width="24" Height="24" HorizontalAlignment="Right" VerticalAlignment="Top"
+                        Background="Transparent" Cursor="Hand" MouseLeftButtonDown="OnCloseClick" RenderTransformOrigin="0.5,0.5">
+                    <Border.RenderTransform>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    </Border.RenderTransform>
+                    <TextBlock Text="✕" FontSize="12" Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+            </Grid>
+
+            <!-- Main Content -->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="310"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- 3 Profiles + Restore -->
+                <StackPanel Grid.Column="0">
+                    <!-- Safe Profile -->
+                    <Button Style="{StaticResource ProfileCardBtnStyle}" Click="OnProfileSafeClick">
+                        <Grid HorizontalAlignment="Stretch">
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock Text="🟢 Профиль «Безопасный» (Safe)" FontWeight="Bold" Foreground="#A3BE8C" FontSize="12" FontFamily="Bahnschrift"/>
+                                <TextBlock Text="Отключение телеметрии, CEIP и отчетов WER. Печать, сеть и Bluetooth работают." FontSize="10" Foreground="#888888" FontFamily="Bahnschrift" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Grid>
+                    </Button>
+
+                    <!-- Gaming Profile -->
+                    <Button Style="{StaticResource ProfileCardBtnStyle}" Click="OnProfileGamingClick">
+                        <Grid HorizontalAlignment="Stretch">
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock Text="🟡 Профиль «Игровой» (Gaming Pro)" FontWeight="Bold" Foreground="#EBCB8B" FontSize="12" FontFamily="Bahnschrift"/>
+                                <TextBlock Text="Отключение Windows Search, биометрии Hello, геолокации, факсов и датчиков." FontSize="10" Foreground="#888888" FontFamily="Bahnschrift" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Grid>
+                    </Button>
+
+                    <!-- Extreme Profile -->
+                    <Button Style="{StaticResource ProfileCardBtnStyle}" Click="OnProfileExtremeClick">
+                        <Grid HorizontalAlignment="Stretch">
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock Text="🔴 Профиль «Экстремальный Superlite»" FontWeight="Bold" Foreground="#BF616A" FontSize="12" FontFamily="Bahnschrift"/>
+                                <TextBlock Text="Максимальная разгрузка ОЗУ: SysMain, автономные карты, служба инсайдеров." FontSize="10" Foreground="#888888" FontFamily="Bahnschrift" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Grid>
+                    </Button>
+
+                    <!-- Restore Default -->
+                    <Button Style="{StaticResource ProfileCardBtnStyle}" Click="OnRestoreServicesClick" Margin="0,10,0,0">
+                        <Grid HorizontalAlignment="Stretch">
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock Text="🔄 Восстановить службы по умолчанию" FontWeight="Bold" Foreground="#88C0D0" FontSize="12" FontFamily="Bahnschrift"/>
+                                <TextBlock Text="Возврат всех служб Windows в исходное заводское состояние." FontSize="10" Foreground="#888888" FontFamily="Bahnschrift" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Grid>
+                    </Button>
+                </StackPanel>
+
+                <!-- Live Log -->
+                <Border Grid.Column="2" Background="#101216" CornerRadius="8" BorderBrush="#252A32" BorderThickness="1" Padding="10">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Text="📟 Журнал изменения служб:" FontSize="11" FontWeight="Bold" Foreground="#888888" FontFamily="Bahnschrift" Margin="0,0,0,6"/>
+
+                        <ScrollViewer Grid.Row="1" x:Name="ScrollLog" VerticalScrollBarVisibility="Auto">
+                            <TextBlock x:Name="TxtLog" Text="Выберите нужный профиль служб слева..."
+                                       FontFamily="Consolas" FontSize="11" Foreground="#00FF66" TextWrapping="Wrap"/>
+                        </ScrollViewer>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

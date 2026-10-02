@@ -1,0 +1,248 @@
+<Window x:Class="WinClickWpf.Views.SystemInfoDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Информация о системе"
+        Width="640" Height="560"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="DarkBgBrush" Color="#141619"/>
+        <SolidColorBrush x:Key="CardBgBrush" Color="#1E2228"/>
+        <SolidColorBrush x:Key="AccentBrush" Color="#5E81AC"/>
+
+        <Style x:Key="PrimaryBtnStyle" TargetType="Button">
+            <Setter Property="Height" Value="34"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontFamily" Value="Bahnschrift"/>
+            <Setter Property="Background" Value="#5E81AC"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="bd" Background="{TemplateBinding Background}" CornerRadius="6" RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                            </Border.RenderTransform>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="14,0,14,0"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bd" Property="Background" Value="#4C566A"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="bd" Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="0.96" ScaleY="0.96"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SecondaryBtnStyle" TargetType="Button">
+            <Setter Property="Height" Value="34"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontFamily" Value="Bahnschrift"/>
+            <Setter Property="Background" Value="#252A32"/>
+            <Setter Property="Foreground" Value="#CCCCCC"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#335E81AC"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="bd" Background="{TemplateBinding Background}" CornerRadius="6" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                            </Border.RenderTransform>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="12,0,12,0"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bd" Property="Background" Value="#3D4450"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="bd" Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="0.96" ScaleY="0.96"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Border Background="{StaticResource DarkBgBrush}" CornerRadius="12" BorderBrush="{StaticResource AccentBrush}" BorderThickness="1" Padding="20" RenderTransformOrigin="0.5,0.5">
+        <Border.RenderTransform>
+            <ScaleTransform x:Name="DialogScale" ScaleX="0.96" ScaleY="0.96"/>
+        </Border.RenderTransform>
+        <Border.Triggers>
+            <EventTrigger RoutedEvent="Border.Loaded">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetName="DialogScale" Storyboard.TargetProperty="ScaleX" From="0.96" To="1.0" Duration="0:0:0.18">
+                            <DoubleAnimation.EasingFunction>
+                                <CubicEase EasingMode="EaseOut"/>
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                        <DoubleAnimation Storyboard.TargetName="DialogScale" Storyboard.TargetProperty="ScaleY" From="0.96" To="1.0" Duration="0:0:0.18">
+                            <DoubleAnimation.EasingFunction>
+                                <CubicEase EasingMode="EaseOut"/>
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Border.Triggers>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Header -->
+            <Grid Grid.Row="0" Margin="0,0,0,14">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <Viewbox Width="20" Height="20" Margin="0,0,10,0" VerticalAlignment="Center">
+                        <Path Fill="White" Opacity="0.7" Data="M4 6h16v10H4zm16 12a2 2 0 002-2V6a2 2 0 00-2-2H4a2 2 0 00-2 2v10a2 2 0 002 2H0v2h24v-2h-4z"/>
+                    </Viewbox>
+                    <StackPanel>
+                        <TextBlock Text="Характеристики и информация о ПК"
+                                   FontFamily="Bahnschrift"
+                                   FontWeight="Bold"
+                                   FontSize="18"
+                                   Foreground="{StaticResource AccentBrush}"/>
+                        <TextBlock Text="Сводка аппаратного обеспечения и установленной операционной системы"
+                                   FontFamily="Bahnschrift"
+                                   FontSize="11"
+                                   Foreground="#888888"
+                                   Margin="0,2,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- Close Button -->
+                <Border Width="24" Height="24" HorizontalAlignment="Right" VerticalAlignment="Top"
+                        Background="Transparent" Cursor="Hand" MouseLeftButtonDown="OnCloseClick" RenderTransformOrigin="0.5,0.5">
+                    <Border.RenderTransform>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    </Border.RenderTransform>
+                    <TextBlock Text="✕" FontSize="12" Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+            </Grid>
+
+            <!-- Specs Cards -->
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" PreviewMouseWheel="OnScrollViewerPreviewMouseWheel">
+                <StackPanel>
+                    <!-- OS & PC Info Card -->
+                    <Border Background="{StaticResource CardBgBrush}" CornerRadius="8" BorderBrush="#33808080" BorderThickness="1" Padding="14,10,14,10" Margin="0,0,0,8">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Viewbox Width="18" Height="18" Margin="0,0,12,0" VerticalAlignment="Top">
+                                <Path Fill="White" Opacity="0.7" Data="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4h-13.051M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-13.051-1.849"/>
+                            </Viewbox>
+                            <StackPanel Grid.Column="1">
+                                <TextBlock Text="Операционная система" FontWeight="Bold" Foreground="White" FontSize="13"/>
+                                <TextBlock x:Name="TxtOs" Text="Загрузка..." Foreground="#CCCCCC" FontSize="12" Margin="0,2,0,0"/>
+                                <TextBlock x:Name="TxtBuild" Text="" Foreground="#888888" FontSize="11" Margin="0,1,0,0"/>
+                                <TextBlock x:Name="TxtPcUser" Text="" Foreground="#888888" FontSize="10" Margin="0,2,0,0"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+                    <!-- CPU Card -->
+                    <Border Background="{StaticResource CardBgBrush}" CornerRadius="8" BorderBrush="#33808080" BorderThickness="1" Padding="14,10,14,10" Margin="0,0,0,8">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Viewbox Width="18" Height="18" Margin="0,0,12,0" VerticalAlignment="Top">
+                                <Path Fill="White" Opacity="0.7" Data="M15 9H9v6h6V9zm-2 4h-2v-2h2v2zm8-2V9h-2V7c0-1.1-.9-2-2-2h-2V3h-2v2h-2V3H9v2H7c-1.1 0-2 .9-2 2v2H3v2h2v2H3v2h2v2c0 1.1.9 2 2 2h2v2h2v-2h2v2h2v-2h2c1.1 0 2-.9 2-2v-2h2v-2h-2v-2h2zm-4 6H7V7h10v10z"/>
+                            </Viewbox>
+                            <StackPanel Grid.Column="1">
+                                <TextBlock Text="Процессор (CPU)" FontWeight="Bold" Foreground="White" FontSize="13"/>
+                                <TextBlock x:Name="TxtCpu" Text="Загрузка..." Foreground="#CCCCCC" FontSize="12" Margin="0,2,0,0"/>
+                                <TextBlock x:Name="TxtCpuCores" Text="" Foreground="#888888" FontSize="11" Margin="0,1,0,0"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+                    <!-- GPU Card -->
+                    <Border Background="{StaticResource CardBgBrush}" CornerRadius="8" BorderBrush="#33808080" BorderThickness="1" Padding="14,10,14,10" Margin="0,0,0,8">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Viewbox Width="18" Height="18" Margin="0,0,12,0" VerticalAlignment="Top">
+                                <Path Fill="White" Opacity="0.7" Data="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5S18.67 9 19.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+                            </Viewbox>
+                            <StackPanel Grid.Column="1">
+                                <TextBlock Text="Видеокарта (GPU)" FontWeight="Bold" Foreground="White" FontSize="13"/>
+                                <TextBlock x:Name="TxtGpu" Text="Загрузка..." Foreground="#CCCCCC" FontSize="12" Margin="0,2,0,0"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+                    <!-- RAM Card -->
+                    <Border Background="{StaticResource CardBgBrush}" CornerRadius="8" BorderBrush="#33808080" BorderThickness="1" Padding="14,10,14,10" Margin="0,0,0,8">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Viewbox Width="18" Height="18" Margin="0,0,12,0" VerticalAlignment="Top">
+                                <Path Fill="White" Opacity="0.7" Data="M2 7v10h20V7H2zm18 8H4V9h16v6zM6 11h2v2H6zm3 0h2v2H9zm3 0h2v2h-2zm3 0h2v2h-2z"/>
+                            </Viewbox>
+                            <StackPanel Grid.Column="1">
+                                <TextBlock Text="Оперативная память (RAM)" FontWeight="Bold" Foreground="White" FontSize="13"/>
+                                <TextBlock x:Name="TxtRam" Text="Загрузка..." Foreground="#CCCCCC" FontSize="12" Margin="0,2,0,0"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+                    <!-- Storage Card -->
+                    <Border Background="{StaticResource CardBgBrush}" CornerRadius="8" BorderBrush="#33808080" BorderThickness="1" Padding="14,10,14,10" Margin="0,0,0,8">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Viewbox Width="18" Height="18" Margin="0,0,12,0" VerticalAlignment="Top">
+                                <Path Fill="White" Opacity="0.7" Data="M6 2h12a2 2 0 012 2v16a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2zm0 2v4h12V4H6zm12 16V10H6v10h12zm-3-4a1 1 0 110-2 1 1 0 010 2z"/>
+                            </Viewbox>
+                            <StackPanel Grid.Column="1">
+                                <TextBlock Text="Накопители (Диски)" FontWeight="Bold" Foreground="White" FontSize="13"/>
+                                <TextBlock x:Name="TxtStorage" Text="Загрузка..." Foreground="#CCCCCC" FontSize="12" Margin="0,2,0,0" LineHeight="18"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+            </ScrollViewer>
+
+            <!-- Bottom Actions -->
+            <Grid Grid.Row="2" Margin="0,14,0,0">
+                <Button Content="📋 СКОПИРОВАТЬ ХАРАКТЕРИСТИКИ" Style="{StaticResource PrimaryBtnStyle}" HorizontalAlignment="Right" Click="OnCopySpecsClick"/>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

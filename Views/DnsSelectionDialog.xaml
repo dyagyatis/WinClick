@@ -1,0 +1,207 @@
+<Window x:Class="WinClickWpf.Views.DnsSelectionDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Выбор DNS-сервера"
+        Width="520" Height="540"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="DarkBgBrush" Color="#141619"/>
+        <SolidColorBrush x:Key="CardBgBrush" Color="#1E2228"/>
+        <SolidColorBrush x:Key="AccentBrush" Color="#5E81AC"/>
+        <SolidColorBrush x:Key="AccentHoverBrush" Color="#4C566A"/>
+
+        <!-- Action Button Style -->
+        <Style x:Key="PrimaryBtnStyle" TargetType="Button">
+            <Setter Property="Height" Value="34"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontFamily" Value="Bahnschrift"/>
+            <Setter Property="Background" Value="#5E81AC"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="bd" Background="{TemplateBinding Background}" CornerRadius="6" RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                            </Border.RenderTransform>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="16,0,16,0"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bd" Property="Background" Value="#4C566A"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="bd" Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="0.96" ScaleY="0.96"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SecondaryBtnStyle" TargetType="Button">
+            <Setter Property="Height" Value="34"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontFamily" Value="Bahnschrift"/>
+            <Setter Property="Background" Value="#252A32"/>
+            <Setter Property="Foreground" Value="#CCCCCC"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#335E81AC"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="bd" Background="{TemplateBinding Background}" CornerRadius="6" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                            </Border.RenderTransform>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="12,0,12,0"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bd" Property="Background" Value="#3D4450"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="bd" Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="0.96" ScaleY="0.96"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Border Background="{StaticResource DarkBgBrush}" CornerRadius="12" BorderBrush="{StaticResource AccentBrush}" BorderThickness="1" Padding="20" RenderTransformOrigin="0.5,0.5">
+        <Border.RenderTransform>
+            <ScaleTransform x:Name="DialogScale" ScaleX="0.96" ScaleY="0.96"/>
+        </Border.RenderTransform>
+        <Border.Triggers>
+            <EventTrigger RoutedEvent="Border.Loaded">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetName="DialogScale" Storyboard.TargetProperty="ScaleX" From="0.96" To="1.0" Duration="0:0:0.18">
+                            <DoubleAnimation.EasingFunction>
+                                <CubicEase EasingMode="EaseOut"/>
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                        <DoubleAnimation Storyboard.TargetName="DialogScale" Storyboard.TargetProperty="ScaleY" From="0.96" To="1.0" Duration="0:0:0.18">
+                            <DoubleAnimation.EasingFunction>
+                                <CubicEase EasingMode="EaseOut"/>
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Border.Triggers>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Header -->
+            <Grid Grid.Row="0" Margin="0,0,0,15">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <Viewbox Width="18" Height="18" Margin="0,0,10,0" VerticalAlignment="Center">
+                        <Path Fill="White" Opacity="0.7" Data="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                    </Viewbox>
+                    <StackPanel>
+                        <TextBlock Text="Выбор DNS-сервера"
+                                   FontFamily="Bahnschrift"
+                                   FontWeight="Bold"
+                                   FontSize="18"
+                                   Foreground="{StaticResource AccentBrush}"/>
+                        <TextBlock Text="Выберите DNS-провайдер для всех активных сетевых адаптеров (Wi-Fi и Ethernet)"
+                                   FontFamily="Bahnschrift"
+                                   FontSize="11"
+                                   Foreground="#888888"
+                                   Margin="0,2,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- Close Button -->
+                <Border Width="24" Height="24" HorizontalAlignment="Right" VerticalAlignment="Top"
+                        Background="Transparent" Cursor="Hand" MouseLeftButtonDown="OnCloseClick" RenderTransformOrigin="0.5,0.5">
+                    <Border.RenderTransform>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    </Border.RenderTransform>
+                    <TextBlock Text="✕" FontSize="12" Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+            </Grid>
+
+            <!-- Presets List -->
+            <Border Grid.Row="1" Background="{StaticResource CardBgBrush}" CornerRadius="8" BorderBrush="#33808080" BorderThickness="1" Padding="10">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" PreviewMouseWheel="OnScrollViewerPreviewMouseWheel">
+                    <ItemsControl x:Name="ListPresets">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border x:Name="ItemBorder"
+                                        Background="#16191E"
+                                        CornerRadius="6"
+                                        BorderBrush="#252A32"
+                                        BorderThickness="1"
+                                        Margin="0,0,0,8"
+                                        Padding="12,10,12,10"
+                                        Cursor="Hand"
+                                        MouseLeftButtonDown="OnPresetItemClick"
+                                        MouseEnter="OnPresetItemMouseEnter"
+                                        MouseLeave="OnPresetItemMouseLeave">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <!-- Monochrome Vector SVG Icon (Matches Social Icons style) -->
+                                        <Viewbox Grid.Column="0" Width="16" Height="16" VerticalAlignment="Center" Margin="0,0,12,0">
+                                            <Path x:Name="PresetIconPath" Fill="White" Opacity="0.7" Data="{Binding IconSvgPath}"/>
+                                        </Viewbox>
+
+                                        <!-- Info -->
+                                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock x:Name="TxtPresetName" Text="{Binding Name}" FontWeight="Bold" Foreground="White" Opacity="0.8" FontSize="13"/>
+                                                <TextBlock Text="{Binding PrimaryDns, StringFormat=' ({0})'}" Foreground="{StaticResource AccentBrush}" FontSize="12" Margin="4,0,0,0"/>
+                                            </StackPanel>
+                                            <TextBlock Text="{Binding Description}" FontSize="11" Foreground="#888888" Margin="0,2,0,0" TextWrapping="Wrap"/>
+                                        </StackPanel>
+
+                                        <!-- Check indicator -->
+                                        <Border Grid.Column="2" x:Name="CheckBd" Width="18" Height="18" CornerRadius="9" BorderBrush="#5E81AC" BorderThickness="1" Background="Transparent" VerticalAlignment="Center" Margin="8,0,0,0">
+                                            <Ellipse x:Name="CheckDot" Width="8" Height="8" Fill="{StaticResource AccentBrush}" Visibility="Collapsed"/>
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Border>
+
+            <!-- Bottom Actions -->
+            <Grid Grid.Row="2" Margin="0,15,0,0">
+                <TextBlock x:Name="TxtSelectedSummary" Text="Выбран: Cloudflare" FontFamily="Bahnschrift" FontSize="12" Foreground="#AAAAAA" VerticalAlignment="Center"/>
+                <Button Content="СОХРАНИТЬ" Style="{StaticResource PrimaryBtnStyle}" HorizontalAlignment="Right" Width="120" Click="OnSaveClick"/>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
