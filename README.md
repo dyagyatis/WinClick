@@ -19,7 +19,7 @@
     <tr>
       <td align="center">
         <a href="https://github.com/MartyFiles/WinClick/releases/download/Release/WinClick.exe">
-          <img src="https://img.shields.io/github/downloads/MartyFiles/WinClick/Release/total?style=for-the-badge&label=WinClick%202.0&color=blue&logo=download">
+          <img src="https://img.shields.io/github/downloads/dyagyatis/WinClick/Release/total?style=for-the-badge&label=WinClick%202.0&color=blue&logo=download">
         </a>
       </td>
       <td align="center">
@@ -34,11 +34,6 @@
       <td align="center">
         <a href="https://youtu.be/qmHfwJpnGYA">
           <img src="https://img.shields.io/badge/WinClick%201.0-red?style=for-the-badge&logo=youtube">
-        </a>
-      </td>
-      <td align="center">
-        <a href="https://www.buymeacoffee.com/martyfiles">
-          <img src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black">
         </a>
       </td>
     </tr>
