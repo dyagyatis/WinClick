@@ -17,7 +17,7 @@
     <tr>
       <td align="center">
         <a href="https://github.com/dyagyatis/WinClick/releases/download/Release/WinClick.exe">
-          <img src="https://img.shields.io/github/downloads/dyagyatis/WinClick/Release/total?style=for-the-badge&label=WinClick%202.0&color=blue&logo=download">
+          <img src="https://img.shields.io/github/downloads/dyagyatis/WinClick/Release/total?style=for-the-badge&label=%202.0&color=blue&logo=download">
         </a>
       </td>
     </tr>
