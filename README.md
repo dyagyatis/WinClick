@@ -13,12 +13,10 @@
   <tbody>
     <tr>
       <td align="center" width="33%"><b>Скачивания</b></td>
-      <td align="center" width="33%"><b>Обзоры</b></td>
-      <td align="center" width="33%"><b>Донаты</b></td>
     </tr>
     <tr>
       <td align="center">
-        <a href="https://github.com/MartyFiles/WinClick/releases/download/Release/WinClick.exe">
+        <a href="https://github.com/dyagyatis/WinClick/releases/download/Release/WinClick.exe">
           <img src="https://img.shields.io/github/downloads/dyagyatis/WinClick/Release/total?style=for-the-badge&label=WinClick%202.0&color=blue&logo=download">
         </a>
       </td>
