@@ -29,11 +29,6 @@
       <td align="center">
         <img src="https://img.shields.io/badge/WinClick%201.0-15k-blue?style=for-the-badge&logo=download">
       </td>
-      <td align="center">
-        <a href="https://youtu.be/qmHfwJpnGYA">
-          <img src="https://img.shields.io/badge/WinClick%201.0-red?style=for-the-badge&logo=youtube">
-        </a>
-      </td>
     </tr>
   </tbody>
 </table>
