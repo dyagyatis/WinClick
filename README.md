@@ -12,25 +12,6 @@
 - UWPDeleter
 #
 
-[![Смотреть видео](https://github.com)]()
-
-<table align="center" style="border: none; border-collapse: collapse;">
-  <tbody>
-    <tr>
-      <td align="center" width="33%"><b>Скачивания</b></td>
-    </tr>
-    <tr>
-      <td align="center">
-        <a href="https://github.com">
-          <img src="https://shields.io">
-        </a>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-#
-
 > [!CAUTION]
 > Программа создана для настройки свежеустановленной системы. При запуске на рабочей / настроенной / оптимизированной ОС ответственность за возможные проблемы ложится на вас.
 
