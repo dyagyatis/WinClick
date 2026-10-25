@@ -15,7 +15,6 @@
 - UWPDeleter
 
 </div>
-
 #
 
 [![Смотреть видео](https://github.com/dyagyatis/WinClick/blob/main/Frame%20248.png)]()
