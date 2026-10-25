@@ -560,7 +560,6 @@ foreach ($item in $ToDel) {
                 "Microsoft.Windows.Notepad.System",
                 "Microsoft.Windows.PowerShell.ISE",
                 "Print.Management.Console",
-                "VBSCRIPT",
                 "OpenSSH.Client",
                 "Hello.Face",
                 "MathRecognizer",
