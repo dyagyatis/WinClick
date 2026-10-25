@@ -69,6 +69,11 @@
 `(Удаляет выбранные UWP-приложения)`
 > [!IMPORTANT]
 > При удалении всех UWP-приложений также удалится Microsoft Store.
+> [!Tip]
+> Замена для фотографий и видео рекомендуется ImageGlass и VLC Media Player [ImageGlass](https://imageglass.org/releases/imageglass-8-12-4-30-eol-47?platform=windows), [VLC Media Player](http://www.videolan.org/vlc/index.html).
+#
+
+
 
 > [!Tip]
 > Восстановить магазин приложений можно командой в командной строке: `wsreset -i`
