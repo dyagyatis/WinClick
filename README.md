@@ -75,10 +75,12 @@
 `(Удаляет выбранные UWP-приложения)`
 > [!IMPORTANT]
 > При удалении всех UWP-приложений также удалится Microsoft Store.
+
 > [!TIP]
 > Восстановить магазин приложений можно командой в командной строке: `wsreset -i`
+
 > [!TIP]
-> Замена для фотографий и видео рекомендуется [ImageGlass](https://imageglass.org/releases/imageglass-8-12-4-30-eol-47?platform=windows) и [VLC Media Player](http://www.videolan.org/vlc/index.html).
+> Замена для фотографий и видео рекомендуется [ImageGlass](https://imageglass.org) и [VLC Media Player](http://videolan.org).
 #
 ### 🌐 Браузер Edge и WebView2
 - Удалить Microsoft Edge
