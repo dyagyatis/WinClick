@@ -72,29 +72,23 @@
 `(Папки "Специальные возможности" и "Стандартные - Windows")`
 - Выбрать отдельные UWP-приложения
 `(Удаляет выбранные UWP-приложения)`
-
 > [!IMPORTANT]
 > При удалении всех UWP-приложений также удалится Microsoft Store.
-
 > [!Tip]
 > Восстановить магазин приложений можно командой в командной строке: `wsreset -i`
-
 > [!Tip]
 > Замена для фотографий и видео рекомендуется [ImageGlass](https://imageglass.org/releases/imageglass-8-12-4-30-eol-47?platform=windows) и [VLC Media Player](http://www.videolan.org/vlc/index.html).
 #
 ### 🌐 Браузер Edge и WebView2
 - Удалить Microsoft Edge
 - Удалить Edge WebView2
-
 > [!IMPORTANT]
 > Если утилита "зависла" на этом пункте, значит есть подключение к сети, что крайне не рекомендуется. Завершите все процессы Edge WebView2 через Диспетчер задач.
-
 > [!Tip]
 > Портативные браузеры [Cent](https://www.centbrowser.com/), [CatsXP](https://www.catsxp.com/), [Floorp](https://floorp.app/), [Vivaldi](https://vivaldi.com/).
 #
 ### 🛡️ Защитник Windows
 - Удалить Защитник Windows
-
 > [!IMPORTANT]
 > Удаление происходит при помощи утилиты [DefenderKiller](https://t.me/martyfiles/1504).
 > Требуется лишь следовать несложным инструкциям в окне программы.
