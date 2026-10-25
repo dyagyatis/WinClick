@@ -2,7 +2,7 @@
 
 ### <img width="128px" src="https://i.ibb.co/0yM1WFqb/ai6k4-ov2am-001-copy.png" /> 
 <strong>WinClick</strong> — настройка и оптимизация Windows 11 в пару кликов!
-## WinClick обьединяет все скрипты от MartyFiles
+##
 
 </div>
 
