@@ -164,7 +164,7 @@
 > [!IMPORTANT]
 > Установка чистых драйверов происходит только при наличии папки Drivers на Рабочем столе.
 > Если ее нет, WinClick пропустит этот этап.
-#
+
 > [!TIP]
 > Экспортировать чистые драйверы можно через [WinClean](https://t.me/martyfiles/1596), [Win10Tweaker](https://win10tweaker.ru) и [DriverStoreExplorer](https://github.com/lostindark/DriverStoreExplorer).
 >
