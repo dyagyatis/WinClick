@@ -166,7 +166,7 @@
 > Если ее нет, WinClick пропустит этот этап.
 
 > [!TIP]
-> Экспортировать чистые драйверы можно через [WinClean](https://t.me/martyfiles/1596), [Win10Tweaker](https://win10tweaker.ru) и [DriverStoreExplorer](https://github.com/lostindark/DriverStoreExplorer).
+> Экспортировать чистые драйверы можно через [DriverStoreExplorer](https://github.com/lostindark/DriverStoreExplorer).
 >
 > Подробнее о чистых драйверах в [видео](https://www.youtube.com/watch?v=lWFLBNbNZTU).
 #
